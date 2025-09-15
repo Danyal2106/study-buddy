@@ -1,26 +1,59 @@
-@import "tailwindcss";
+/* ---------- Tema-variabler ---------- */
+/* LIGHT – behold nøyaktig de gamle fargene dine */
+:root[data-theme="light"] {
+  --bg: #F8F5EF;
+  --card: #FFFFFF;
+  --text: #1F2937;
+  --muted: #6B7280;
+  --border: #E5E7EB;
+  --accent: #111827;
+  --dot: #A4B3C7;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Overflater brukt i header/søk/chips – dine originale */
+  --surface1: #E6DFD3;          /* headerWrap bakgrunn */
+  --surface2: #E2DAC9;          /* search/filter bakgrunn */
+  --surface2-border: #D9D1C1;
+  --chip: #DED6C7;
+  --chip-border: #D2C9B8;
+
+  /* Subject-kort palett (rotasjon 1..4) – dine originale pasteller */
+  --subj1-bg: #DDEAFE; --subj1-border: #BFD4FA;
+  --subj2-bg: #FDE7DF; --subj2-border: #F7CDBC;
+  --subj3-bg: #FBE7A1; --subj3-border: #F6D985;
+  --subj4-bg: #FDE0CC; --subj4-border: #F8CDAF;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* DARK – varme, «sepia»-vennlige varianter av paletten din */
+:root[data-theme="dark"] {
+  /* Grunnflaten */
+  --bg: #0F1113;          /* varm, veldig mørk bakgrunn */
+  --card: #171B1F;        /* kort/overflate */
+  --text: #E6E1D9;        /* varm lys tekst */
+  --muted: #AAA49A;       /* dempet tekst */
+  --border: #283039;      /* diskret kant */
+  --accent: #A67C52;      /* varm «primary» (kontrast med hvit tekst) */
+  --dot: #7E8894;
+
+  /* Header/søk/chips – mørke varianter av dine beige toner */
+  --surface1: #181C21;        /* headerWrap */
+  --surface2: #21262D;        /* search/filter */
+  --surface2-border: #2C333C;
+  --chip: #232A32;
+  --chip-border: #2E3742;
+
+  /* Subject-kort – mørke slektninger av dine 4 pasteller */
+  --subj1-bg: #1E2B45;    --subj1-border: #2C3E63;  /* blålig */
+  --subj2-bg: #3A2B2B;    --subj2-border: #5A3E3E;  /* peach→brent */
+  --subj3-bg: #3A321C;    --subj3-border: #5A4A23;  /* gul→oker */
+  --subj4-bg: #3A2F27;    --subj4-border: #5A4638;  /* aprikos→kakao */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Global bakgrunn/tekst følger alltid tema-variablene */
+html, body { background: var(--bg); color: var(--text); }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Liten skygge/elevasjon – mørkere i dark */
+.elev { box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+:root[data-theme="dark"] .elev {
+  box-shadow: 0 10px 28px rgba(0,0,0,.45);
+  border-color: rgba(255,255,255,.06);
 }
